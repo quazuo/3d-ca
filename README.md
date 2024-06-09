@@ -26,13 +26,6 @@ All other dependencies are included in the `deps` subdirectory.
 Press `` ` `` to open/close the GUI, `F1` to lock/unlock the mouse.
 `WASD` for camera movement, arrows or mouse for camera rotation.
 
-### Gallery
-
-![image](https://github.com/quazuo/3d-ca/assets/25569500/08870470-1ffc-4b22-a03e-e90935c870b2)
-![image](https://github.com/quazuo/3d-ca/assets/25569500/719b8c23-59af-4131-b756-59babd427ddf)
-![image](https://github.com/quazuo/3d-ca/assets/25569500/a3d2d9ce-f394-4740-aec1-18f694fd48aa)
-![image](https://github.com/quazuo/3d-ca/assets/25569500/f6e552f2-f25e-4b10-a79f-3e5583b19484)
-
 ### Potential improvements/extensions
 
 * make the code look a bit nicer as it's pretty rough right now
