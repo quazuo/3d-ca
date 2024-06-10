@@ -367,9 +367,6 @@ void main() {
 
     outColor = vec4(get_node_color(ray_result.node), 1);
 
-    // undo stupid ass gamma correction
-    outColor = pow(outColor, vec4(2.2));
-
     // apply fake lighting
     const vec3 LIGHT_DIRECTION = normalize(vec3(1, 1.5, 2));
     const float d = max(dot(ray_result.normal, LIGHT_DIRECTION), dot(ray_result.normal, vec3(-1) * LIGHT_DIRECTION));
