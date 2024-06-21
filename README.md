@@ -20,7 +20,7 @@ When modifying shaders, they need to be recompiled. To compile shaders, first go
 ./compile.bat
 ```
 
-Then, run an exporter tool (which also compiles while compiling the main executable) that exports shader Spir-V code into an embeddable C++ source file:
+Then, run an exporter tool (which is compiled alongside the main executable) that exports shader Spir-V code into an embeddable C++ source file:
 ```
 cd <build-directory-name>
 shader_export.exe
