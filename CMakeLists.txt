@@ -37,8 +37,6 @@ set_source_files_properties(
 )
 
 file(GLOB deps_SRCS
-        "deps/stb/*"
-        "deps/tinyobjloader/*"
         "deps/vma/*"
 )
 

@@ -2,8 +2,6 @@
 
 #include <filesystem>
 
-#include "deps/stb/stb_image.h"
-
 #include "buffer.h"
 #include "cmd.h"
 #include "src/render/renderer.h"

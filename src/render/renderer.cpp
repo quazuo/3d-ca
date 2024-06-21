@@ -10,12 +10,10 @@
 #include <optional>
 #include <set>
 #include <vector>
-#include <fstream>
 #include <filesystem>
 #include <array>
 #include <random>
 
-#include "deps/tinyobjloader/tiny_obj_loader.h"
 #include "src/utils/octree-gen.h"
 
 #include "vertex.h"
