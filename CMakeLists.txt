@@ -55,7 +55,7 @@ add_executable(3dca ${3dca_SRCS} ${deps_SRCS} ${IMGUI_SRCS} ${IMGUI_IMPL_SRCS})
 target_link_libraries(3dca ${ALL_LIBS})
 
 file(GLOB shader_compile_SRCS
-        "shaders/compile.cpp"
+        "shaders/embed_tool/compile.cpp"
 )
 
 add_executable(shader_compile ${shader_compile_SRCS})

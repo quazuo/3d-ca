@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-static const std::string inBasePath = "../shaders";
+static const std::string inBasePath = "../shaders/obj";
 static const std::string outBasePath = "../src/shaders/";
 
 void exportFile(const std::filesystem::path &inPath) {

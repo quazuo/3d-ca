@@ -4,17 +4,17 @@ for /D %%i in (C:\VulkanSDK\*) do set "SDK_DIR=%%i"
 set "IS_ERROR=0"
 
 @echo on
-%SDK_DIR%/Bin/glslc.exe shader.vert -o vert.spv -g --target-env=vulkan1.1
+%SDK_DIR%/Bin/glslc.exe shader.vert -o obj/vert.spv -g --target-env=vulkan1.1
 @echo off
 if %ERRORLEVEL% NEQ 0 set "IS_ERROR=1"
 
 @echo on
-%SDK_DIR%/Bin/glslc.exe shader.frag -o frag.spv -g --target-env=vulkan1.1
+%SDK_DIR%/Bin/glslc.exe shader.frag -o obj/frag.spv -g --target-env=vulkan1.1
 @echo off
 if %ERRORLEVEL% NEQ 0 set "IS_ERROR=1"
 
 @echo on
-%SDK_DIR%/Bin/glslc.exe shader.comp -o comp.spv -g --target-env=vulkan1.1
+%SDK_DIR%/Bin/glslc.exe shader.comp -o obj/comp.spv -g --target-env=vulkan1.1
 @echo off
 if %ERRORLEVEL% NEQ 0 set "IS_ERROR=1"
 
