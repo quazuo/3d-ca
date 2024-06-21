@@ -369,7 +369,7 @@ private:
     void createComputePipeline();
 
     [[nodiscard]]
-    vk::raii::ShaderModule createShaderModule(const std::filesystem::path &path) const;
+    vk::raii::ShaderModule createShaderModule(const std::vector<unsigned char>& bytes) const;
 
     // ==================== multisampling ====================
 

@@ -21,6 +21,10 @@
 #include "vertex.h"
 #include "vk/cmd.h"
 
+#include "src/shaders/vert.h"
+#include "src/shaders/frag.h"
+#include "src/shaders/comp.h"
+
 VmaAllocatorWrapper::VmaAllocatorWrapper(const vk::PhysicalDevice physicalDevice, const vk::Device device,
                                          const vk::Instance instance) {
     static constexpr VmaVulkanFunctions funcs{
@@ -778,8 +782,11 @@ void AutomatonRenderer::createRenderPass() {
 }
 
 void AutomatonRenderer::createGraphicsPipeline() {
-    const vk::raii::ShaderModule vertShaderModule = createShaderModule("../shaders/vert.spv");
-    const vk::raii::ShaderModule fragShaderModule = createShaderModule("../shaders/frag.spv");
+    const auto& vertexShaderBytes = shaders::vert;
+    const auto& fragmentShaderBytes = shaders::frag;
+
+    const vk::raii::ShaderModule vertShaderModule = createShaderModule(vertexShaderBytes);
+    const vk::raii::ShaderModule fragShaderModule = createShaderModule(fragmentShaderBytes);
 
     const vk::PipelineShaderStageCreateInfo vertShaderStageInfo{
         .stage = vk::ShaderStageFlagBits::eVertex,
@@ -896,7 +903,9 @@ void AutomatonRenderer::createGraphicsPipeline() {
 }
 
 void AutomatonRenderer::createComputePipeline() {
-    const vk::raii::ShaderModule compShaderModule = createShaderModule("../shaders/comp.spv");
+    const auto& computeShaderBytes = shaders::comp;
+
+    const vk::raii::ShaderModule compShaderModule = createShaderModule(computeShaderBytes);
 
     const vk::PipelineShaderStageCreateInfo computeShaderStageInfo{
         .stage = vk::ShaderStageFlagBits::eCompute,
@@ -928,21 +937,10 @@ void AutomatonRenderer::createComputePipeline() {
 }
 
 [[nodiscard]]
-vk::raii::ShaderModule AutomatonRenderer::createShaderModule(const std::filesystem::path &path) const {
-    std::ifstream file(path, std::ios::ate | std::ios::binary);
-
-    if (!file.is_open()) {
-        throw std::runtime_error("failed to open file!");
-    }
-
-    const size_t fileSize = file.tellg();
-    std::vector<char> buffer(fileSize);
-    file.seekg(0);
-    file.read(buffer.data(), static_cast<std::streamsize>(fileSize));
-
+vk::raii::ShaderModule AutomatonRenderer::createShaderModule(const std::vector<unsigned char>& bytes) const {
     const vk::ShaderModuleCreateInfo createInfo{
-        .codeSize = buffer.size(),
-        .pCode = reinterpret_cast<const std::uint32_t *>(buffer.data()),
+        .codeSize = bytes.size(),
+        .pCode = reinterpret_cast<const std::uint32_t *>(bytes.data()),
     };
 
     return {*ctx.device, createInfo};
