@@ -10,13 +10,21 @@ This project currently works only for Windows.
 
 To compile this code you need to have the [LunarG Vulkan SDK](https://vulkan.lunarg.com/) installed.
 
-The project is compiled simply using `cmake`, but for it to work properly it needs to be compiled so that the executable is in some subdirectory 
-(i.e. one level deeper than the root directory), for example:
+The project is compiled simply using `cmake`:
 ```
 cmake --build <build-directory-name>
 ```
-Next you also need to compile shaders by going into the `shaders` subdirectory and executing `compile.bat`.
-After these two steps the executable should be working correctly.
+
+When modifying shaders, they need to be recompiled. To compile shaders, first go into the `shaders` directory and run:
+```
+./compile.bat
+```
+
+Then, run an exporter tool (which also compiles while compiling the main executable) that exports shader Spir-V code into an embeddable C++ source file:
+```
+cd <build-directory-name>
+shader_export.exe
+```
 
 Keep in mind that currently this project requires your machine to support Vulkan 1.3 (which is subject for change in the future).
 All other dependencies are included in the `deps` subdirectory.
@@ -37,8 +45,8 @@ Press `` ` `` to open/close the GUI, `F1` to lock/unlock the mouse.
 * make the code look a bit nicer as it's pretty rough right now
 * make the vulkan renderer a bit more low-end machine friendly
 * more automaton presets or customization options
-* more ways to customize coloring of cells
-* try packing two cells into one byte to halve memory usage and optimize a bit
+* more ways to customize cell coloring
+* try packing two cells into one byte to halve memory usage and see how performance changes
 * further optimize the fragment shader
 * render automaton bounds so it's easier to see where it actually is
 * maybe allow for non-power-of-two grid widths
